@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main">
+
+    <com.camerakit.CameraKitView
+        android:id="@+id/camera_view"
+        android:layout_width="0dp"
+        android:layout_height="320dp"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginTop="24dp"
+        android:adjustViewBounds="true"
+        android:background="@color/translucent"
+        android:keepScreenOn="true"
+        app:camera_facing="front"
+        app:camera_flash="auto"
+        app:camera_focus="auto"
+        app:camera_permissions="camera"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/camera_status_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_photo_camera"
+        android:tint="@color/icons"
+        app:layout_constraintLeft_toLeftOf="@+id/camera_view"
+        app:layout_constraintTop_toBottomOf="@+id/camera_view"/>
+
+    <TextView
+        android:id="@+id/camera_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/camera_status_icon"
+        app:layout_constraintLeft_toRightOf="@+id/camera_status_icon"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:tint="@color/icons"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camera_view"
+        app:srcCompat="@drawable/ic_camera"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_phone_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:hint="Phone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fab_camera"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_phone_otp_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:hint="OTP"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fab_camera"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_phone_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/phone_status_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_local_phone"
+        android:tint="@color/icons"
+        app:layout_constraintLeft_toLeftOf="@+id/input_phone_layout"
+        app:layout_constraintTop_toBottomOf="@+id/input_phone_layout"/>
+
+    <TextView
+        android:id="@+id/phone_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/phone_status_icon"
+        app:layout_constraintLeft_toRightOf="@+id/phone_status_icon"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:tint="@color/icons"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_phone_layout"
+        app:srcCompat="@drawable/ic_cloud_upload"/>
+
+</android.support.constraint.ConstraintLayout>
