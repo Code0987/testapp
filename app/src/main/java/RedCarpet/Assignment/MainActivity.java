@@ -338,6 +338,8 @@ public class MainActivity extends AppCompatActivity {
 			return;
 		}
 
+		input_phone_layout.setError(null);
+
 		phone = "+91" + phone;
 
 		updatePhoneStatus("Checking...", true);
@@ -497,7 +499,7 @@ public class MainActivity extends AppCompatActivity {
 
 				String photo = Objects.requireNonNull(task.getResult()).toString();
 
-				DatabaseReference ref = db.child(DB_KEY_VISITORS).child(key);
+				DatabaseReference ref = db.child(collection).child(key);
 
 				HashMap<Object, Object> values = new HashMap<>();
 				values.put(DB_KEY_PHONE, phone);
@@ -511,13 +513,14 @@ public class MainActivity extends AppCompatActivity {
 						if (databaseError != null) {
 							updatePhoneStatus("An error caught!", false);
 
-							if (!collection.equals(DB_KEY_SUSPICIOUS_USERS))
-								showMessage("Err! Unable to save new visitor!");
+							showMessage("Err! Unable to saver!");
 						} else {
 							updatePhoneStatus("Saved!", false);
 
 							if (!collection.equals(DB_KEY_SUSPICIOUS_USERS))
 								showMessage("Welcome! New visitor saved!");
+							else
+								showMessage("Suspicious activity recorded.");
 						}
 					}
 				});
@@ -568,6 +571,9 @@ public class MainActivity extends AppCompatActivity {
 					showMessage("Verification failed!");
 
 					createNewVisitor(DB_KEY_SUSPICIOUS_USERS);
+
+					input_phone_layout.setVisibility(View.VISIBLE);
+					input_phone_otp_layout.setVisibility(View.INVISIBLE);
 				}
 
 				@Override
